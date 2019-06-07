@@ -36,13 +36,16 @@ export default {
       color: "",
       connectors: ["for", "with", "during"],
       backgrounds: [
-        { image: "1.jpg" },
-        { image: "2.jpg" },
-        { image: "3.jpg" },
-        { image: "4.jpg" },
-        { image: "5.jpg" },
-        { image: "6.jpg" },
-        { image: "7.jpg" }
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "4.jpg",
+        "5.jpg",
+        "6.jpg",
+        "7.jpg",
+        "8.jpg",
+        "9.jpg",
+        "10.jpg"
       ]
     };
   },
@@ -54,9 +57,7 @@ export default {
       this.verb = this.rand(verbs);
       this.connector = this.rand(this.connectors);
       this.noun = this.rand(nouns);
-
-      let bg = this.rand(this.backgrounds);
-      this.background = bg.image;
+      this.background = this.rand(this.backgrounds);
       this.color = this.getRandomColor();
     },
     getRandomColor() {
