@@ -34,7 +34,7 @@ export default {
       noun: "",
       background: "",
       color: "",
-      connectors: ["for", "with", "in"],
+      connectors: ["for", "with", "during"],
       backgrounds: [
         { image: "1.jpg" },
         { image: "2.jpg" },
@@ -101,6 +101,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   font-family: 'Work Sans', sans-serif;
   padding: 10vw;
   overflow: hidden;
@@ -135,6 +136,7 @@ export default {
   font-size: 9vw;
   line-height: 6vw;
   font-weight: 700;
+  text-transform: capitalize;
   animation: fade-up forwards;
   animation-duration: .5s;
   animation-delay: 0s;

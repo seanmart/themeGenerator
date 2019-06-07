@@ -26,7 +26,6 @@ export default [
   "care",
   "challenge",
   "change",
-  "chase",
   "cheerfulness",
   "choice",
   "circle",
