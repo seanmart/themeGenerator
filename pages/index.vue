@@ -201,6 +201,7 @@ export default {
 
     .noun{
       font-size: 15vw;
+      line-height: 12vw;
     }
   }
 </style>
