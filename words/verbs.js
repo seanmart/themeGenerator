@@ -56,6 +56,5 @@ export default [
   "gain",
   "gather",
   "generate",
-  "grasp",
-  "toddstreet"
+  "grasp"
 ];
