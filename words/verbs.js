@@ -2,7 +2,7 @@ export default [
   "Changing",
   "Growing",
   "Empowering",
-  "Conquoring",
+  "Conquering",
   "Achieving",
   "Crushing",
   "Motivating",

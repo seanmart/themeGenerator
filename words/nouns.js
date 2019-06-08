@@ -17,7 +17,6 @@ export default [
   "avoidance",
   "badness",
   "belief",
-  "blackness",
   "blood",
   "boredom",
   "botheration",

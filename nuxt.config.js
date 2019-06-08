@@ -19,6 +19,10 @@ export default {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Work+Sans:500,700,900"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Satisfy"
       }
     ]
   },
