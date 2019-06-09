@@ -10,8 +10,8 @@
           :key="'v' + verb"
           :style="{
             ...textOutline,
-            fontSize: 17 - verb.length + 'vw',
-            lineHeight: 15 - verb.length + 'vw'
+            fontSize: 19 - verb.length + 'vw',
+            lineHeight: 19 - verb.length + 'vw'
           }"
           :class="styles[0]"
         >
@@ -22,7 +22,11 @@
           class="connector"
           :key="'c' + connector"
           :class="styles[1]"
-          :style="textOutline"
+          :style="{
+            ...textOutline,
+            fontSize: 12 - connector.length + 'vw',
+            lineHeight: 12 - verb.length + 'vw'
+          }"
         >
           {{ connector }}
         </span>
@@ -32,8 +36,8 @@
           :key="'n' + noun"
           :style="{
             ...textOutline,
-            fontSize: 21 - noun.length * 1.2 + 'vw',
-            lineHeight: 18 - noun.length + 'vw'
+            fontSize: 24 - noun.length * 1.2 + 'vw',
+            lineHeight: 20 - noun.length + 'vw'
           }"
         >
           {{ noun }}
@@ -276,7 +280,7 @@ export default {
 }
 
 .theme span{
-  padding: 10px;
+  padding: 0px 1vw;
   display: inline-block;
   opacity: 0
 }
