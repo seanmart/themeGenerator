@@ -5,13 +5,13 @@ export default [
   "Conquering",
   "Achieving",
   "Crushing",
-  "Motivation",
+  "Motivating",
   "Being",
   "abolishing",
   "accelerating",
   "achieving",
   "acting",
-  "adoption",
+  "adopting",
   "aligning",
   "anticipating",
   "applying",
@@ -57,6 +57,5 @@ export default [
   "gathering",
   "generating",
   "grasping",
-  "this",
   "this"
 ];
