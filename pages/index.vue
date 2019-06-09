@@ -28,8 +28,8 @@ import images from "@/content/images";
 import tc from "tinycolor2";
 
 //effects
-import bold from "@/components/effects/bold";
-import neon from "@/components/effects/neon";
+import bold from "@/components/bold";
+import neon from "@/components/neon";
 
 export default {
   components: {
