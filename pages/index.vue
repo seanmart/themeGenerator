@@ -65,16 +65,25 @@ export default {
       connectors: ["for", "with", "during"],
       styles: ["regular", "cursive", "bold"],
       backgrounds: [
-        { image: "1.jpg", color: "dark" },
-        { image: "2.jpg", color: "light" },
-        { image: "3.jpg", color: "light" },
-        { image: "4.jpg", color: "light" },
-        { image: "5.jpg", color: "light" },
+        { image: "1.jpg", color: "light" },
+        { image: "2.jpg", color: "dark" },
+        { image: "3.jpg", color: "dark" },
+        { image: "4.jpg", color: "dark" },
+        { image: "5.jpg", color: "dark" },
         { image: "6.jpg", color: "light" },
-        { image: "7.jpg", color: "light" },
-        { image: "8.jpg", color: "light" },
+        { image: "7.jpg", color: "dark" },
+        { image: "8.jpg", color: "dark" },
         { image: "9.jpg", color: "light" },
-        { image: "10.jpg", color: "light" }
+        { image: "11.jpg", color: "dark" },
+        { image: "12.jpg", color: "dark" },
+        { image: "13.jpg", color: "dark" },
+        { image: "14.jpg", color: "dark" },
+        { image: "15.jpg", color: "dark" },
+        { image: "16.jpg", color: "dark" },
+        { image: "17.jpg", color: "dark" },
+        { image: "18.jpg", color: "dark" },
+        { image: "19.jpg", color: "light" },
+        { image: "20.jpg", color: "dark" }
       ]
     };
   },
@@ -104,7 +113,8 @@ export default {
 
       do {
         color = c.getRandomColor();
-      } while (c.lightOrDark(color) !== bg.color);
+      } while (c.lightOrDark(color) === bg.color);
+
       this.color = color;
 
       this.antiColor = c.LightenDarkenColor(
