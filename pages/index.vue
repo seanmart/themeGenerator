@@ -5,40 +5,35 @@
     </div>
     <div class="theme" :style="{ color }">
       <div class="content">
-        <span
-          class="verb"
-          :key="'v' + verb"
-          :style="{
-            ...textOutline,
-            fontSize: 19 - verb.length + 'vw'
-          }"
-          :class="styles[0]"
-        >
-          {{ verb }}
-        </span>
+        <word
+          :text="verb"
+          size="medium"
+          :effect="effects[0]"
+          :color="color"
+          :outline="outline"
+          :delay="0"
+          :key="color + verb"
+        />
 
-        <span
-          class="connector"
-          :key="'c' + connector"
-          :class="styles[1]"
-          :style="{
-            ...textOutline,
-            fontSize: 12 - connector.length + 'vw'
-          }"
-        >
-          {{ connector }}
-        </span>
+        <word
+          :text="connector"
+          size="small"
+          :effect="effects[1]"
+          :color="color"
+          :outline="outline"
+          :delay="0.3"
+          :key="color + connector"
+        />
 
-        <span
-          class="noun bold"
-          :key="'n' + noun"
-          :style="{
-            ...textOutline,
-            fontSize: 24 - noun.length * 1.2 + 'vw'
-          }"
-        >
-          {{ noun }}
-        </span>
+        <word
+          :text="noun"
+          size="big"
+          effect="bold"
+          :color="color"
+          :outline="outline"
+          :delay="0.6"
+          :key="color + noun"
+        />
       </div>
       <div
         class="background"
@@ -50,10 +45,14 @@
 </template>
 
 <script>
-import verbs from "@/words/verbs";
-import nouns from "@/words/nouns";
+import verbs from "@/content/verbs";
+import nouns from "@/content/nouns";
+import connectors from "@/content/connectors";
+import images from "@/content/images";
 import c from "@/plugins/colorFunctions";
+import word from "@/components/word";
 export default {
+  components: { word },
   data() {
     return {
       verb: "toddstreet",
@@ -61,39 +60,9 @@ export default {
       noun: "Generator",
       background: { image: "", color: "light" },
       color: "#f2b534",
-      antiColor: "",
-      connectors: ["for", "with", "during"],
-      styles: ["regular", "cursive", "bold"],
-      backgrounds: [
-        { image: "1.jpg", color: "light" },
-        { image: "2.jpg", color: "dark" },
-        { image: "3.jpg", color: "dark" },
-        { image: "4.jpg", color: "dark" },
-        { image: "5.jpg", color: "dark" },
-        { image: "6.jpg", color: "light" },
-        { image: "7.jpg", color: "dark" },
-        { image: "8.jpg", color: "dark" },
-        { image: "9.jpg", color: "light" },
-        { image: "11.jpg", color: "dark" },
-        { image: "12.jpg", color: "dark" },
-        { image: "13.jpg", color: "dark" },
-        { image: "14.jpg", color: "dark" },
-        { image: "15.jpg", color: "dark" },
-        { image: "16.jpg", color: "dark" },
-        { image: "17.jpg", color: "dark" },
-        { image: "18.jpg", color: "dark" },
-        { image: "19.jpg", color: "light" },
-        { image: "20.jpg", color: "dark" }
-      ]
+      outline: "",
+      effects: ["regular", "cursive", "bold"]
     };
-  },
-  computed: {
-    textOutline() {
-      let c = this.antiColor;
-      return {
-        textShadow: `-1px -1px 0px ${c},1px -1px 0px ${c},-1px 1px 0px ${c}, 1px 1px 0px ${c}`
-      };
-    }
   },
   methods: {
     rand(max) {
@@ -103,44 +72,33 @@ export default {
       return list[this.rand(list.length)];
     },
     generate() {
-      let bg = this.randListItem(this.backgrounds);
-      this.verb = this.randListItem(verbs);
-      this.connector = this.randListItem(this.connectors);
-      this.noun = this.randListItem(nouns);
+      let bg = this.randListItem(images);
       this.background = bg;
-
-      let color = "";
-
+      this.verb = this.randListItem(verbs);
+      this.connector = this.randListItem(connectors);
+      this.noun = this.randListItem(nouns);
+      this.effects = this.shuffle(this.effects);
+      this.color = this.getColor(bg.color);
+      this.outline = c.ColorLD(this.color, bg.color === "light" ? -50 : 50);
+    },
+    getColor(color) {
+      let newColor = "";
       do {
-        color = c.getRandomColor();
-      } while (c.lightOrDark(color) === bg.color);
-
-      this.color = color;
-
-      this.antiColor = c.LightenDarkenColor(
-        this.color,
-        bg.color === "light" ? -50 : 50
-      );
-
-      this.styles = this.shuffle(this.styles);
+        newColor = c.getRandomColor();
+      } while (c.lightOrDark(newColor) === color);
+      return newColor;
     },
     shuffle(array) {
-      var currentIndex = array.length,
-        temporaryValue,
-        randomIndex;
-
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+      var a = array.length,
+        t,
+        r;
+      while (0 !== a) {
+        r = Math.floor(Math.random() * a);
+        a -= 1;
+        t = array[a];
+        array[a] = array[r];
+        array[r] = t;
       }
-
       return array;
     }
   }
@@ -179,25 +137,6 @@ export default {
   color: white;
 }
 
-
-.generate{
-  padding: 15px 25px;
-  background: black;
-  color: white;
-  border-radius: 5px;
-  transition: .25s;
-  text-decoration: none;
-  display: inline-block;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1
-}
-
-.generate:active{
-  transform: scale(.9);
-}
-
 .theme{
   position: relative;
   display: flex;
@@ -225,65 +164,9 @@ export default {
 .content{
   text-align: center;
   position: relative;
-  z-index: 1;
-}
+  z-index: 2;
 
-.theme span{
-  padding: 0px 1vw;
-  display: inline-block;
-  opacity: 0;
-  line-height: 90%;
 }
-
-.verb{
-  animation: fade-up forwards;
-  animation-duration: .5s;
-  animation-delay: 0s;
-}
-
-.connector{
-  animation: fade-up forwards;
-  animation-duration: .5s;
-  animation-delay: .25s;
-}
-
-.noun{
-  animation: fade-up forwards;
-  animation-duration: 2s;
-  animation-delay: .5s;
-  text-transform: capitalize;
-}
-
-.bold{
-  font-family: 'Work Sans', sans-serif;
-  text-transform:uppercase;
-  font-weight: 900;
-  text-shadow: 0px 5px 20px rgba(0,0,0,1) !important;
-  color: white;
-}
-
-.regular{
-  text-transform: capitalize;
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 700;
-}
-
-.cursive{
-  font-family: 'Satisfy', cursive;
-  position: relative;
-  z-index: 5
-}
-
-  @keyframes fade-up{
-    from{
-      transform: translateY(30px);
-      opacity: 0;
-    }
-    to{
-      transform: translateY(0px);
-      opacity: 1
-    }
-  }
 
   @keyframes ken-burns{
     0%{
@@ -295,15 +178,6 @@ export default {
     }
     100%{
       transform: scale(1.3)
-    }
-  }
-
-  @keyframes twinkle{
-    0%, 100%{
-      opacity: 0
-    }
-    30%{
-      opacity: 1
     }
   }
 

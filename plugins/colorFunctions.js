@@ -42,7 +42,7 @@ export default {
       return "dark";
     }
   },
-  LightenDarkenColor(col, amt) {
+  ColorLD(col, amt) {
     var usePound = false;
 
     if (col[0] == "#") {
