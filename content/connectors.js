@@ -5,6 +5,5 @@ export default [
   "changes",
   "makes",
   "creates",
-  "starts",
-  "the"
+  "starts"
 ];

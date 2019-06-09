@@ -56,6 +56,5 @@ export default [
   "gaining",
   "gathering",
   "generating",
-  "grasping",
-  "this"
+  "grasping"
 ];
