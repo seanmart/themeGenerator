@@ -39,8 +39,8 @@ export default {
   data() {
     return {
       words: {
-        verb: "toddstreet",
-        connect: "theme",
+        verb: "theme",
+        connect: "",
         noun: "generator"
       },
       color: "yellow",
