@@ -55,7 +55,7 @@ export default {
     },
     generate() {
       this.words.connect = connects[this.rand(connects.length)];
-      this.words.verb = this.words.noun;
+      this.words.verb = verbs[this.rand(verbs.length)];
       this.words.noun = nouns[this.rand(nouns.length)];
       this.image = images[this.rand(images.length)];
       this.createColors();
