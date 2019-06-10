@@ -40,7 +40,7 @@ export default {
     return {
       words: {
         verb: "theme",
-        connect: "-o-",
+        connect: "",
         noun: "generator"
       },
       color: "yellow",
