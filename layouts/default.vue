@@ -34,6 +34,7 @@ html {
     opacity: 1;
   }
   100% {
+    opacity: 0;
     transform: scale(1.3);
   }
 }
