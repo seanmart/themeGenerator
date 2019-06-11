@@ -102,7 +102,6 @@ export default [
   "monotony",
   "movement",
   "narrowness",
-  "nationally",
   "observation",
   "ownership",
   "performance",

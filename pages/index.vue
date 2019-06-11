@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="page" @click="generate">
-    <h3>Click to Regenerate</h3>
+    <h3 class="instructions">Click to Regenerate</h3>
 
     <div id="words">
       <component :words="words" :color="color" :is="effects[index]" />
@@ -30,11 +30,13 @@ import tc from "tinycolor2";
 //effects
 import bold from "@/components/bold";
 import neon from "@/components/neon";
+import block from "@/components/block";
 
 export default {
   components: {
     bold,
-    neon
+    neon,
+    block
   },
   data() {
     return {
@@ -45,7 +47,7 @@ export default {
       },
       color: "yellow",
       image: "",
-      effects: ["bold", "neon"],
+      effects: ["bold", "neon", "block"],
       index: 0
     };
   },
@@ -108,7 +110,7 @@ export default {
   animation-duration: 20s
 }
 
-h3{
+.instructions{
   position: absolute;
   top: 20px;
   left: 50%;
