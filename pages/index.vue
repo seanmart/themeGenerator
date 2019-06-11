@@ -61,8 +61,6 @@ export default {
       this.image = images[this.rand(images.length)];
       this.createColors();
 
-      console.log(this.background);
-
       this.index = this.index === this.effects.length - 1 ? 0 : this.index + 1;
 
       this.timeout && clearTimeout(this.timeout);
