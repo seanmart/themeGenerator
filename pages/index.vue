@@ -5,7 +5,6 @@
     <transition name="fade">
       <div class="content" :key="Date.now()">
         <component :words="words" :color="color" :is="effects[index]" />
-
         <div class="background" :style="background" />
       </div>
     </transition>
@@ -84,6 +83,7 @@ export default {
 
 <style lang="css">
 #page{
+  user-select: none;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
