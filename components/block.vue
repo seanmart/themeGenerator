@@ -30,7 +30,7 @@ export default {
         c: {
           fontSize: 3 + "vw"
         },
-        n: { fontSize: 24 - this.words.noun.length + "vw" },
+        n: { fontSize: 23 - this.words.noun.length + "vw" },
         l: { borderColor: this.color }
       };
     }
