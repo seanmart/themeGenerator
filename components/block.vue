@@ -49,7 +49,6 @@ export default {
   justify-content: center;
   background: rgba(0,0,0,.7);
   padding: 3vw;
-  perspective: 1000px;
 }
 
 .line-text{

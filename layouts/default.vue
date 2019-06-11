@@ -28,13 +28,8 @@ html {
 @keyframes ken-burns {
   0% {
     transform: scale(1);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
   }
   100% {
-    opacity: 0;
     transform: scale(1.3);
   }
 }

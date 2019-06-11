@@ -2,20 +2,12 @@
   <div id="page" @click="generate">
     <h3 class="instructions">Click to Regenerate</h3>
 
-    <div id="words">
-      <component :words="words" :color="color" :is="effects[index]" />
-    </div>
+    <transition name="fade">
+      <div class="content" :key="Date.now()">
+        <component :words="words" :color="color" :is="effects[index]" />
 
-    <transition
-      name="fade"
-      :duration="{ enter: 1000, leave: 1000 }"
-      v-if="image.name"
-    >
-      <div
-        class="background"
-        :style="{ backgroundImage: `url(${image.name})` }"
-        :key="image.name"
-      />
+        <div class="background" :style="background" />
+      </div>
     </transition>
   </div>
 </template>
@@ -40,16 +32,23 @@ export default {
   },
   data() {
     return {
+      timeout: null,
       words: {
         verb: "theme",
         connect: "",
         noun: "generator"
       },
       color: "yellow",
-      image: "",
+      image: null,
       effects: ["bold", "neon", "block"],
       index: 0
     };
+  },
+  computed: {
+    background() {
+      if (!this.image) return {};
+      return { backgroundImage: `url(${this.image.name})` };
+    }
   },
   methods: {
     rand(max) {
@@ -62,7 +61,12 @@ export default {
       this.image = images[this.rand(images.length)];
       this.createColors();
 
+      console.log(this.background);
+
       this.index = this.index === this.effects.length - 1 ? 0 : this.index + 1;
+
+      this.timeout && clearTimeout(this.timeout);
+      this.timeout = setTimeout(this.generate, 10000);
     },
     createColors() {
       let color;
@@ -85,24 +89,31 @@ export default {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   color: white;
   padding: 5vw;
+  position: relative;
 }
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+  transition: 1s;
 }
 
-.background{
+.content, .background{
   position: absolute;
   top: 0px;
   left: 0px;
   bottom: 0px;
   right: 0px;
+}
+
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background{
   background-position: center center;
   background-size: cover;
   z-index: -1;
