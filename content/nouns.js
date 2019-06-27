@@ -121,6 +121,5 @@ export default [
   "speed",
   "teamwork",
   "a new way forward",
-  "world",
-  "toddstreet"
+  "world"
 ];
