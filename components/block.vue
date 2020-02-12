@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="block">
+    <div class="bg"/>
     <div class="block-content">
       <div class="line-text">
         <div class="line left" :style="styles.l" />
@@ -47,8 +48,19 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,.7);
   padding: 3vw;
+  position: relative;
+}
+
+.block .bg{
+  background: rgba(0,0,0,.7);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  animation: fade-on .5s backwards;
 }
 
 .line-text{

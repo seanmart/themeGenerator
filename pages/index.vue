@@ -1,10 +1,10 @@
 <template lang="html">
   <div id="page" @click="generate">
-    <h3 class="instructions">Click to Regenerate</h3>
+    <h3 class="instructions">Click or press [SPACE] to Regenerate</h3>
 
     <transition name="fade">
-      <div class="content" :key="Date.now()">
-        <component :words="words" :color="color" :is="effects[index]" />
+      <div class="content" :key="index">
+        <component :is="effects[index]"  :words="words" :color="color" :key="index"/>
         <div class="background" :style="background" />
       </div>
     </transition>
@@ -43,6 +43,11 @@ export default {
       index: 0
     };
   },
+  mounted(){
+    document.addEventListener("keypress", (e)=>{
+      e.code === 'Space' && this.generate()
+    }, false);
+  },
   computed: {
     background() {
       if (!this.image) return {};
@@ -54,8 +59,8 @@ export default {
       return Math.floor(Math.random() * Math.floor(max));
     },
     generate() {
-      this.words.connect = connects[this.rand(connects.length)];
       this.words.verb = this.words.noun;
+      this.words.connect = connects[this.rand(connects.length)];
       this.words.noun = nouns[this.rand(nouns.length)];
       this.image = images[this.rand(images.length)];
       this.createColors();
@@ -94,7 +99,7 @@ export default {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
-  transition: 1s;
+  transition: 2s;
 }
 
 .content, .background{

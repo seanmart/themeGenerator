@@ -1,5 +1,6 @@
 <template lang="html">
-  <div class="neon" :style="{ background }">
+  <div class="neon">
+    <div class="bg":style="{ background }"/>
     <div class="inner-neon">
       <span class="v">{{ words.verb }}</span>
       <span class="c">{{ words.connect }}</span>
@@ -21,7 +22,7 @@ export default {
         .clone()
         .darken(15)
         .saturate(100)
-        .setAlpha(0.8);
+        .setAlpha(0.5);
     },
     neon() {
       let c = this.color.toString();
@@ -42,7 +43,22 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,.8)
+  position: relative;
+}
+
+.neon .bg{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  animation: fade-on .5s backwards;
+}
+
+.inner-neon{
+  position: relative;
+  z-index: 1;
 }
 
 span{
@@ -52,8 +68,7 @@ span{
 .v{
   font-weight: 900;
   font-size: 5vw;
-  opacity: 0;
-  animation: fade-down 1s forwards;
+  animation: fade-down 1s backwards;
 }
 
 .c{
@@ -74,6 +89,6 @@ span{
   line-height: 100%;
   opacity: 0;
   animation: fade-on 2s forwards;
-  animation-delay: .5s;
+  animation-delay: .8s;
 }
 </style>
