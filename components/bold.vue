@@ -22,10 +22,7 @@ export default {
       return {
         v: {
           color: c,
-          fontSize: `${20 - w.verb.length}vw`,
-          textStroke: `1px ${
-            c.isDark() ? c.clone().lighten(25) : c.clone().darken(25)
-          }`
+          fontSize: `${20 - w.verb.length}vw`
         },
         c: {
           color: c.isDark() ? c.clone().darken(30) : c.clone().lighten(30),
@@ -34,8 +31,7 @@ export default {
         n: {
           color: "white",
           fontSize: `${22 - w.noun.length}vw`,
-          textShadow: `0px .5vw 1vw black`,
-          textStroke: `1px ${c}`
+          textShadow: `0px .5vw 1vw black`
         }
       };
     }
