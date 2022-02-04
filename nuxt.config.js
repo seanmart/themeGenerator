@@ -19,7 +19,7 @@ export default {
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css2?family=Satisfy&family=Work+Sans:wght@300;400;500;700;900&display=swap"
+          "https://fonts.googleapis.com/css2?family=Satisfy&family=Work+Sans:wght@300;500;700;900&display=swap"
       }
     ]
   },
